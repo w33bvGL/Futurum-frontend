@@ -76,21 +76,24 @@ const togglePromoCode = () => {
                 height: 1.9rem
 
         &-type
-            display: none
+            display: flex
             flex-direction: column
-            transition: max-height 0.3s ease, opacity 0.3s ease
+            transition: width 0.3s ease, max-height 0.3s ease, opacity 0.3s ease
             max-height: 0
             opacity: 0
+            width: 0
             overflow: hidden
 
             &.is-open
                 display: flex
+                width: 200px
                 max-height: 500px
                 opacity: 1
-
+               
             &-text
                 font-family: Inter, sans-serif
                 font-weight: bold
+                text-wrap: nowrap
                 margin-bottom: 0.2rem
 
             &-form
