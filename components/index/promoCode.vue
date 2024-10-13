@@ -1,41 +1,53 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, computed} from 'vue'
 
 const isOpen = ref(false)
+const promoCodeInput = ref('')
+const validPromoCode = 'code2024'
 
 const togglePromoCode = () => {
     isOpen.value = !isOpen.value
 }
+
+const isPromoCodeValid = computed(() => promoCodeInput.value === validPromoCode)
 </script>
 
 <template>
     <section class="promo-code" id="promo-code">
-        <div class="promo-code-inner">
-            <button class="promo-code-inner-button" @click="togglePromoCode">
-                <NuxtImg class="promo-code-inner-button-icon" src="/image/bin/promocode.png"/>
-            </button>
+        <div class="promo-code-inner" v-if="!isPromoCodeValid">
+            <div class="promo-code-inner-no-active">
+                <button class="promo-code-inner-button" @click="togglePromoCode">
+                    <NuxtImg class="promo-code-inner-button-icon" src="/image/bin/promocode.png"/>
+                </button>
 
-            <div
-                class="promo-code-inner-type"
-                :class="{ 'is-open': isOpen }"
-            >
-                <p class="promo-code-inner-type-text">Ввести промо-код</p>
-                <div class="promo-code-inner-type-form">
-                    <input
-                        class="promo-code-inner-type-form-input"
-                        type="text"
-                        placeholder="Промо-код"
-                        autocomplete="on"
-                        required
-                    />
-                    <button class="promo-code-inner-type-form-button" type="submit">
-                        <NuxtImg
-                            class="promo-code-inner-type-form-button-icon"
-                            src="/image/bin/submit.png"
+                <div
+                    class="promo-code-inner-type"
+                    :class="{ 'is-open': isOpen }"
+                >
+                    <p class="promo-code-inner-type-text">Ввести промо-код</p>
+                    <div class="promo-code-inner-type-form">
+                        <input
+                            v-model="promoCodeInput"
+                            class="promo-code-inner-type-form-input"
+                            type="text"
+                            placeholder="Промо-код"
+                            autocomplete="on"
+                            required
                         />
-                    </button>
+                        <button class="promo-code-inner-type-form-button" type="submit">
+                            <NuxtImg
+                                class="promo-code-inner-type-form-button-icon"
+                                src="/image/bin/submit.png"
+                            />
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div v-else class="promo-code-active">
+            <NuxtLink to="/private">
+                <NuxtImg style="height: 95px; display: flex" src="/image/airdrop/button.png"/>
+            </NuxtLink>
         </div>
     </section>
 </template>
@@ -52,7 +64,7 @@ const togglePromoCode = () => {
     justify-content: flex-end
 
     &-inner
-        padding: 0.5rem 1rem
+        padding: 0.5rem 0.5rem
         background-color: var(--color-white-60)
         display: flex
         align-items: center
@@ -61,6 +73,10 @@ const togglePromoCode = () => {
         border-bottom-left-radius: 2rem
         border: 0.15em solid var(--color-black)
         border-right-color: var(--color-transparent)
+
+        &-no-active
+            display: flex
+            gap: 0.5rem
 
         &-button
             background-color: var(--color-black)

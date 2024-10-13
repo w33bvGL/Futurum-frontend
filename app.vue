@@ -1,30 +1,18 @@
 <template>
     <div class="main">
-        <CaptchaPage v-if="showCaptcha" @captchaPassed="handleCaptchaPassed" />
-        <Preloader v-else-if="loading" @loadingComplete="handleLoadingComplete" />
-        <NuxtLayout v-else>
-            <NuxtPage />
+        <Preloader v-show="loading" @loadingComplete="handleLoadingComplete"/>
+        <NuxtLayout v-show="!loading">
+            <NuxtPage/>
         </NuxtLayout>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import {ref} from 'vue'
 
 const loading = ref(true)
-const showCaptcha = ref(false)
-
-onMounted(() => {
-    const isFirstVisit = !localStorage.getItem('captchaPassed')
-    showCaptcha.value = isFirstVisit
-})
-
-function handleCaptchaPassed() {
-    localStorage.setItem('captchaPassed', 'true')
-    showCaptcha.value = false
-}
 
 function handleLoadingComplete() {
-    loading.value = false
+    loading.value = false;
 }
 </script>
