@@ -3,7 +3,10 @@
 </script>
 
 <template>
+    <CommonHeader/>
+    <CommonBalance/>
     <slot></slot>
+    <CommonNavBar/>
 </template>
 
 <style scoped>
