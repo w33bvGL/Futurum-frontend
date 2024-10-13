@@ -13,7 +13,8 @@
                 <span><NuxtImg class="navbar-inner-button-icon" src="/image/bin/bank.png"/></span>
                 <span class="navbar-inner-button-text">банк</span>
             </NuxtLink>
-            <NuxtLink class="navbar-inner-airdrop-button" to="/airdrop">
+            <NuxtLink class="navbar-inner-airdrop-button" to="/airdrop"
+                      active-class="navbar-inner-airdrop-button-active">
                     <span class="navbar-inner-airdrop-button-background">
                         <NuxtImg class="navbar-inner-airdrop-button-icon" src="/image/bin/rocket.png"/>
                         <NuxtImg class="navbar-inner-airdrop-button-icon-star" src="/image/bin/star.png"/>
@@ -88,6 +89,9 @@
             justify-content: center
             align-items: center
             position: relative
+
+            &-active
+                background-color: var(--color-white-60)
 
             &-text
                 font-weight: bold

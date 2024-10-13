@@ -3,8 +3,7 @@
 </script>
 
 <template>
-    <CommonBackgroundImage image-url="image/farm/bg.png"/>
-    <IndexPromoCode/>
+    <CommonBackgroundImage image-url="image/airdrop/bg.png"/>
 </template>
 
 <style scoped lang="sass">

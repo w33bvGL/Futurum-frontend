@@ -19,8 +19,8 @@
     z-index: 100
     background-color: var(--color-transparent)
     min-height: 170px
-    max-height: 220px
-    height: 100vh
+    max-height: 200px
+    height: auto
     padding-bottom: 20px
     display: flex
     align-items: flex-end
