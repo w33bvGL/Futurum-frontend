@@ -89,7 +89,7 @@ const togglePromoCode = () => {
                 width: 200px
                 max-height: 500px
                 opacity: 1
-               
+
             &-text
                 font-family: Inter, sans-serif
                 font-weight: bold
