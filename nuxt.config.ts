@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     devtools: { enabled: false },
     ssr: false,
     css: ['~/assets/sass/root.sass'],
-    modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
+    modules: ['@nuxt/image', '@nuxtjs/google-fonts', '@nuxtjs/turnstile'],
 
     googleFonts: {
         families: {
@@ -17,11 +17,20 @@ export default defineNuxtConfig({
         prefetchLinks: true,
     },
 
+    turnstile: {
+        siteKey: '1x00000000000000000000AA',
+    },
+    
+    runtimeConfig: {
+        turnstile: {
+            secretKey: '',
+        },
+    },
+
     app: {
         head: {
             script: [
-                { src: 'https://telegram.org/js/telegram-web-app.js', async: true },
-                { src: 'https://js.hcaptcha.com/1/api.js', async: true, defer: true },
+                { src: 'https://telegram.org/js/telegram-web-app.js', async: true }
             ],
         },
     },

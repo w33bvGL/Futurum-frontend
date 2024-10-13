@@ -1,35 +1,43 @@
-<template>
-	<div class="captcha-container">
-		<h2>Пройдите капчу, чтобы продолжить</h2>
-		<div class="captcha">
-			<div
-					class="h-captcha"
-					data-sitekey="7b681170-1360-495a-b58e-62a6b22a7cea"
-					@verify="handleCaptchaSuccess"
-			></div>
-		</div>
-	</div>
-</template>
-
 <script setup lang="ts">
-// ES_8bb1b61cccdb4d669f54ef7aa1b54f05
+import { ref } from 'vue';
+import { defineEmits } from 'vue';
 
-import { defineEmits } from 'vue'
+const emit = defineEmits(['captchaPassed']);
 
-const emit = defineEmits(['captchaPassed'])
+const captchaInput = ref('');
+const errorMessage = ref('');
 
-function handleCaptchaSuccess(token: string) {
-	console.log('Captcha token:', token)
-	emit('captchaPassed')
+function onSubmit() {
+	if (captchaInput.value === 'ASXDR') {
+		handleCaptchaSuccess();
+	} else {
+		handleCaptchaError('Неверный ввод капчи. Попробуйте снова.');
+	}
+}
+
+function handleCaptchaSuccess() {
+	console.log('Капча пройдена успешно.');
+	emit('captchaPassed');
+}
+
+function handleCaptchaError(error: string) {
+	errorMessage.value = error;
 }
 </script>
 
-<style>
-.captcha-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-}
-</style>
+<template>
+	<div class="captcha-container">
+		<form @submit.prevent="onSubmit">
+			<label for="captcha-input">Введите капчу:</label>
+			<input
+					type="text"
+					id="captcha-input"
+					v-model="captchaInput"
+					placeholder="Введите текст капчи"
+					required
+			/>
+			<button type="submit">Отправить</button>
+		</form>
+		<p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+	</div>
+</template>
