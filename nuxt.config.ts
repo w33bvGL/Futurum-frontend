@@ -1,13 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
-    devtools: {enabled: false},
+    devtools: { enabled: false },
     ssr: false,
-    head: {
-        script: [
-            {src: 'https://telegram.org/js/telegram-web-app.js', async: true}
-        ],
-    },
     css: ['~/assets/sass/root.sass'],
     modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
 
@@ -15,10 +10,19 @@ export default defineNuxtConfig({
         families: {
             Montserrat: true,
             Inter: true,
-        }
+        },
     },
 
     router: {
         prefetchLinks: true,
+    },
+
+    app: {
+        head: {
+            script: [
+                { src: 'https://telegram.org/js/telegram-web-app.js', async: true },
+                { src: 'https://js.hcaptcha.com/1/api.js', async: true, defer: true },
+            ],
+        },
     },
 })
