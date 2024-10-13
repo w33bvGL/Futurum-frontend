@@ -9,7 +9,7 @@
                 <span><NuxtImg class="navbar-inner-button-icon" src="/image/bin/moneyicon.png"/></span>
                 <span class="navbar-inner-button-text">Фарм</span>
             </NuxtLink>
-            <NuxtLink class="navbar-inner-button" to="/bank" active-class="navbar-inner-button-active">
+            <NuxtLink class="navbar-inner-button" active-class="navbar-inner-button-active">
                 <span><NuxtImg class="navbar-inner-button-icon" src="/image/bin/bank.png"/></span>
                 <span class="navbar-inner-button-text">банк</span>
             </NuxtLink>
@@ -28,7 +28,7 @@
                 <span><NuxtImg class="navbar-inner-button-icon" src="/image/bin/team.png"/></span>
                 <span class="navbar-inner-button-text">Каманда</span>
             </NuxtLink>
-            <NuxtLink class="navbar-inner-button" to="/course" active-class="navbar-inner-button-active">
+            <NuxtLink class="navbar-inner-button" active-class="navbar-inner-button-active">
                 <span><NuxtImg class="navbar-inner-button-icon" src="/image/bin/courese.png"/></span>
                 <span class="navbar-inner-button-text">Курсы</span>
             </NuxtLink>
